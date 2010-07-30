@@ -1,0 +1,20 @@
+<h1>Listing milestone_categories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% @milestone_categories.each do |milestone_category| %>
+  <tr>
+    <td><%=h milestone_category.name %></td>
+    <td><%= link_to 'Show', milestone_category %></td>
+    <td><%= link_to 'Edit', edit_milestone_category_path(milestone_category) %></td>
+    <td><%= link_to 'Destroy', milestone_category, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New milestone_category', new_milestone_category_path %>

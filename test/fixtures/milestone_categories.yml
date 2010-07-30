@@ -1,0 +1,8 @@
+illness:
+  name: Illness
+
+physical:
+  name: Physical
+  
+mental:
+  name: Mental

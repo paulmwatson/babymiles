@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>BabyMiles: <%= controller.controller_name %> - <%= controller.action_name %></title>
+    <meta name="description" content="BabyMiles. Data intelligence for your sprogs."/>
+    <%= stylesheet_link_tag 'scaffold', 'main', 'statuses' %>
+    <link rel="shortcut icon" href="favicon.ico" />
+  </head>
+  <body>
+    <ul id="site_navigation">
+      <li><a href="/" title="">BabyMiles</a></li>
+      <li><a href="/statuses/" title="">Statuses</a></li>
+      <li><a href="/milestones/" title="">Milestones</a></li>
+      <li><a href="/children/" title="">Children</a></li>
+      <li><a href="/locations/" title="">Locations</a></li>
+      <li><a href="/parents/" title="">Parents</a></li>
+    </ul>
+    <%= yield %>
+  </body>
+</html>

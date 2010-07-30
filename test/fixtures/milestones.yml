@@ -1,0 +1,19 @@
+diseasechickenpox:
+  name: Chicken Pox
+  reward: 10
+  milestone_category: illness
+  
+saidfirstwords:
+  name: Said First Words
+  reward: 50
+  milestone_category: mental
+  
+height:
+  name: Height Measurement
+  reward: 1
+  milestone_category: physical
+
+weight:
+  name: Weight Measurement
+  reward: 1
+  milestone_category: physical

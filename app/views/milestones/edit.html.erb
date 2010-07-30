@@ -1,0 +1,20 @@
+<h1>Editing milestone</h1>
+
+<% form_for(@milestone) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :reward %><br />
+    <%= f.text_field :reward %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @milestone %> |
+<%= link_to 'Back', milestones_path %>

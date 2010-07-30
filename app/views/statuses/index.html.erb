@@ -1,0 +1,32 @@
+<h1>Statuses</h1>
+
+<% form_for(@status) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.select :child_id, Child.all.collect {|c| [c.name, c.id]} %> 
+    <%= f.select :milestone_id, Milestone.all.collect {|m| [m.name, m.id]} %> 
+    <%= f.text_field :body %> <br />
+    <%= f.select :location_id, Location.all.collect {|l| [l.description, l.id]} %> 
+    <%= f.submit 'Create' %>
+  </p>  
+<% end %>
+
+<ul class="statuses">
+  <%- @statuses.each do |status| -%>
+  <li>
+    <p>
+      <%= link_to(h(status.child.name), status.child) %> 
+      <%= link_to(h(status.milestone.name), status.milestone) %> 
+      (<%= link_to(h(status.milestone.milestone_category.name), status.milestone.milestone_category) %>) 
+      <%= h(status.body) %>
+    </p>
+    <p class="meta">
+      Location: <%= link_to(h(truncate(status.location.description)), status.location) %> |
+      When: <%=h(status.created_at) %> |
+      <%= link_to('Edit', edit_status_path(status)) %> |
+      <%= link_to('Destroy', status, :confirm => 'Are you sure?', :method => :delete) %>
+    </p>
+  </li>
+  <%- end -%>
+</ul>

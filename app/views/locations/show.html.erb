@@ -1,0 +1,21 @@
+<p>
+  <b>Lat:</b>
+  <%=h @location.lat %>
+</p>
+
+<p>
+  <b>Lng:</b>
+  <%=h @location.lng %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @location.description %>
+</p>
+
+<p>
+  <a href="http://maps.google.com/?ll=<%= h(@location.lat) %>,<%= h(@location.lng) %>" target="_blank">Map</a>
+</p>
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

@@ -1,0 +1,1982 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateStatuses (20100729211929)
+  [4;35;1mSQL (0.9ms)[0m   [0mCREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729211929')[0m
+Migrating to CreateChildren (20100729212011)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "children" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212011')[0m
+Migrating to CreateMilestones (20100729212103)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "milestones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "reward" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212103')[0m
+Migrating to CreateParents (20100729212144)
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "parents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212144')[0m
+Migrating to CreateLocations (20100729212221)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" varchar(255), "lng" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212221')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("children")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("locations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("milestones")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("parents")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("statuses")[0m
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:24:32) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+Completed in 23ms (View: 18, DB: 0) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing ChildrenController#index (for 127.0.0.1 at 2010-07-29 22:24:47) [GET]
+  [4;35;1mChild Load (0.4ms)[0m   [0mSELECT * FROM "children" [0m
+Rendering template within layouts/children
+Rendering children/index
+Completed in 17ms (View: 12, DB: 0) | 200 OK [http://127.0.0.1/children]
+
+
+Processing ParentsController#index (for 127.0.0.1 at 2010-07-29 22:24:50) [GET]
+  [4;36;1mParent Load (0.5ms)[0m   [0;1mSELECT * FROM "parents" [0m
+Rendering template within layouts/parents
+Rendering parents/index
+Completed in 80ms (View: 75, DB: 1) | 200 OK [http://127.0.0.1/parents]
+
+
+Processing ParentsController#new (for 127.0.0.1 at 2010-07-29 22:24:52) [GET]
+Rendering template within layouts/parents
+Rendering parents/new
+Completed in 24ms (View: 20, DB: 0) | 200 OK [http://127.0.0.1/parents/new]
+
+
+Processing MilestonesController#index (for 127.0.0.1 at 2010-07-29 22:25:01) [GET]
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+Rendering template within layouts/milestones
+Rendering milestones/index
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://127.0.0.1/milestones]
+
+
+Processing MilestonesController#new (for 127.0.0.1 at 2010-07-29 22:25:03) [GET]
+Rendering template within layouts/milestones
+Rendering milestones/new
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://127.0.0.1/milestones/new]
+
+
+Processing MilestonesController#new (for 127.0.0.1 at 2010-07-29 22:28:01) [GET]
+Rendering template within layouts/milestones
+Rendering milestones/new
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/milestones/new]
+
+
+Processing MilestonesController#new (for 127.0.0.1 at 2010-07-29 22:29:08) [GET]
+Rendering template within layouts/milestones
+Rendering milestones/new
+Completed in 358ms (View: 105, DB: 0) | 200 OK [http://127.0.0.1/milestones/new]
+
+
+Processing MilestonesController#new (for 127.0.0.1 at 2010-07-29 22:30:03) [GET]
+Rendering template within layouts/milestones
+Rendering milestones/new
+Completed in 97ms (View: 47, DB: 0) | 200 OK [http://127.0.0.1/milestones/new]
+
+
+Processing MilestonesController#new (for 127.0.0.1 at 2010-07-29 22:31:55) [GET]
+Rendering template within layouts/milestones
+Rendering milestones/new
+Completed in 39ms (View: 34, DB: 0) | 200 OK [http://127.0.0.1/milestones/new]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+
+
+Processing MilestonesController#new (for 127.0.0.1 at 2010-07-29 22:35:45) [GET]
+Rendering template within layouts/milestones
+Rendering milestones/new
+Completed in 23ms (View: 8, DB: 0) | 200 OK [http://127.0.0.1/milestones/new]
+
+
+Processing MilestonesController#create (for 127.0.0.1 at 2010-07-29 22:35:54) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"SzxMzbOnrFcIXcdACLlylv+S2J/0V8+Fa7LurW9e+aI=", "milestone"=>{"name"=>"Chicken Pox", "reward"=>"10"}}
+  [4;36;1mMilestone Create (0.4ms)[0m   [0;1mINSERT INTO "milestones" ("name", "created_at", "reward", "updated_at") VALUES('Chicken Pox', '2010-07-29 21:35:54', 10, '2010-07-29 21:35:54')[0m
+Redirected to http://127.0.0.1:3000/milestones/1
+Completed in 56ms (DB: 0) | 302 Found [http://127.0.0.1/milestones]
+
+
+Processing MilestonesController#show (for 127.0.0.1 at 2010-07-29 22:35:54) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 1) [0m
+Rendering template within layouts/milestones
+Rendering milestones/show
+Completed in 15ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/milestones/1]
+
+
+Processing ChildrenController#index (for 127.0.0.1 at 2010-07-29 22:36:00) [GET]
+  [4;36;1mChild Load (0.4ms)[0m   [0;1mSELECT * FROM "children" [0m
+Rendering template within layouts/children
+Rendering children/index
+Completed in 85ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/children]
+
+
+Processing ChildrenController#new (for 127.0.0.1 at 2010-07-29 22:36:02) [GET]
+Rendering template within layouts/children
+Rendering children/new
+Completed in 28ms (View: 21, DB: 0) | 200 OK [http://127.0.0.1/children/new]
+
+
+Processing ChildrenController#create (for 127.0.0.1 at 2010-07-29 22:36:20) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"SzxMzbOnrFcIXcdACLlylv+S2J/0V8+Fa7LurW9e+aI=", "child"=>{"name"=>"Leah E. Watson", "birthdate(1i)"=>"2008", "birthdate(2i)"=>"7", "birthdate(3i)"=>"18", "birthdate(4i)"=>"14", "birthdate(5i)"=>"00"}}
+  [4;35;1mChild Create (0.6ms)[0m   [0mINSERT INTO "children" ("name", "created_at", "birthdate", "updated_at") VALUES('Leah E. Watson', '2010-07-29 21:36:20', '2008-07-18 14:00:00', '2010-07-29 21:36:20')[0m
+Redirected to http://127.0.0.1:3000/children/1
+Completed in 72ms (DB: 1) | 302 Found [http://127.0.0.1/children]
+
+
+Processing ChildrenController#show (for 127.0.0.1 at 2010-07-29 22:36:20) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 1) [0m
+Rendering template within layouts/children
+Rendering children/show
+Completed in 32ms (View: 24, DB: 0) | 200 OK [http://127.0.0.1/children/1]
+
+
+Processing LocationsController#index (for 127.0.0.1 at 2010-07-29 22:36:26) [GET]
+  [4;35;1mLocation Load (0.4ms)[0m   [0mSELECT * FROM "locations" [0m
+Rendering template within layouts/locations
+Rendering locations/index
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://127.0.0.1/locations]
+
+
+Processing LocationsController#new (for 127.0.0.1 at 2010-07-29 22:36:28) [GET]
+Rendering template within layouts/locations
+Rendering locations/new
+Completed in 94ms (View: 89, DB: 0) | 200 OK [http://127.0.0.1/locations/new]
+
+
+Processing LocationsController#create (for 127.0.0.1 at 2010-07-29 22:38:03) [POST]
+  Parameters: {"location"=>{"lng"=>"-7.2074", "description"=>"31 The Pines, Ballinakill Downs, Waterford, co. Waterford, Ireland", "lat"=>"52.3118"}, "commit"=>"Create", "authenticity_token"=>"SzxMzbOnrFcIXcdACLlylv+S2J/0V8+Fa7LurW9e+aI="}
+  [4;36;1mLocation Create (40.4ms)[0m   [0;1mINSERT INTO "locations" ("created_at", "updated_at", "lng", "description", "lat") VALUES('2010-07-29 21:38:03', '2010-07-29 21:38:03', '-7.2074', '31 The Pines, Ballinakill Downs, Waterford, co. Waterford, Ireland', '52.3118')[0m
+Redirected to http://127.0.0.1:3000/locations/1
+Completed in 52ms (DB: 40) | 302 Found [http://127.0.0.1/locations]
+
+
+Processing LocationsController#show (for 127.0.0.1 at 2010-07-29 22:38:03) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 1) [0m
+Rendering template within layouts/locations
+Rendering locations/show
+Completed in 24ms (View: 11, DB: 0) | 200 OK [http://127.0.0.1/locations/1]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:38:21) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 22:38:23) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+Completed in 15ms (View: 9, DB: 0) | 200 OK [http://127.0.0.1/statuses/new]
+
+
+Processing StatusesController#create (for 127.0.0.1 at 2010-07-29 22:38:27) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"SzxMzbOnrFcIXcdACLlylv+S2J/0V8+Fa7LurW9e+aI=", "status"=>{"body"=>"testing"}}
+  [4;35;1mStatus Create (0.3ms)[0m   [0mINSERT INTO "statuses" ("created_at", "body", "updated_at") VALUES('2010-07-29 21:38:27', 'testing', '2010-07-29 21:38:27')[0m
+Redirected to http://127.0.0.1:3000/statuses/1
+Completed in 59ms (DB: 0) | 302 Found [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#show (for 127.0.0.1 at 2010-07-29 22:38:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mStatus Load (0.9ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 1) [0m
+Rendering template within layouts/statuses
+Rendering statuses/show
+Completed in 18ms (View: 8, DB: 1) | 200 OK [http://127.0.0.1/statuses/1]
+  [4;35;1mStatus Load (0.2ms)[0m   [0mSELECT * FROM "statuses" [0m
+  [4;36;1mStatus Load (0.3ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+  [4;35;1mLocation Load (0.0ms)[0m   [0mSQLite3::SQLException: no such column: locations.status_id: SELECT * FROM "locations" WHERE ("locations".status_id = 1) LIMIT 1[0m
+  [4;36;1mStatus Load (0.5ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (50.9ms)[0m   [0;1mCREATE TABLE "children" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (4.2ms)[0m   [0;1mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" varchar(255), "lng" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (4.7ms)[0m   [0;1mCREATE TABLE "milestones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "reward" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mCREATE TABLE "parents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (4.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (10.3ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (3.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100729212221')[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100729211929')[0m
+  [4;35;1mSQL (7.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100729212011')[0m
+  [4;36;1mSQL (5.3ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100729212103')[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100729212144')[0m
+  [4;36;1mStatus Load (0.3ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCREATE TABLE "children" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" varchar(255), "lng" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mCREATE TABLE "milestones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "reward" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCREATE TABLE "parents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (37.1ms)[0m   [0;1mCREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (4.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (3.3ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (3.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100729212221')[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100729211929')[0m
+  [4;35;1mSQL (5.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100729212011')[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100729212103')[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100729212144')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStatuses (20100729211929)
+Migrating to CreateChildren (20100729212011)
+Migrating to CreateMilestones (20100729212103)
+Migrating to CreateParents (20100729212144)
+Migrating to CreateLocations (20100729212221)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("children")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("locations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("milestones")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("parents")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("statuses")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateStatuses (20100729211929)
+  [4;35;1mSQL (13.1ms)[0m   [0mCREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar(255), "location_id" integer, "child_id" integer, "milestone_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729211929')[0m
+Migrating to CreateChildren (20100729212011)
+  [4;35;1mSQL (15.9ms)[0m   [0mCREATE TABLE "children" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212011')[0m
+Migrating to CreateMilestones (20100729212103)
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "milestones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "reward" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212103')[0m
+Migrating to CreateParents (20100729212144)
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE "parents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212144')[0m
+Migrating to CreateLocations (20100729212221)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" varchar(255), "lng" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212221')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("children")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("locations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("milestones")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("parents")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("statuses")[0m
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;36;1mMilestone Load (0.3ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:49:17) [GET]
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 29ms (View: 22, DB: 1) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:50:30) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 27ms (View: 21, DB: 1) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:51:59) [GET]
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 100ms (View: 27, DB: 1) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:52:40) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 28ms (View: 22, DB: 1) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing ChildrenController#show (for 127.0.0.1 at 2010-07-29 22:52:42) [GET]
+  Parameters: {"id"=>"535793408"}
+  [4;35;1mChild Load (0.1ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+Rendering template within layouts/children
+Rendering children/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/children/535793408]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:53:59) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+
+ActionView::TemplateError (wrong number of arguments (2 for 1)) on line #14 of app/views/statuses/index.html.erb:
+11: 
+12: <% @statuses.each do |status| %>
+13:   <tr>
+14:     <td><%= link_to h status.child.name, status.child %></td>
+15:     <td><%= link_to h status.milestone.name, status.milestone %></td>
+16:     <td><%= h status.body %></td>
+17:     <td><%= link_to h truncate status.location.description, status.location %></td>
+
+    app/views/statuses/index.html.erb:14:in `h'
+    app/views/statuses/index.html.erb:14
+    app/views/statuses/index.html.erb:12:in `each'
+    app/views/statuses/index.html.erb:12
+    app/controllers/statuses_controller.rb:7:in `index'
+
+Rendered rescues/_trace (44.0ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:54:12) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+
+ActionView::TemplateError (wrong number of arguments (2 for 1)) on line #14 of app/views/statuses/index.html.erb:
+11: 
+12: <% @statuses.each do |status| %>
+13:   <tr>
+14:     <td><%= link_to h status.child.name, status.child %></td>
+15:     <td><%= link_to h status.milestone.name, status.milestone %></td>
+16:     <td><%= h status.body %></td>
+17:     <td><%= link_to h(truncate(status.location.description)), status.location %></td>
+
+    app/views/statuses/index.html.erb:14:in `h'
+    app/views/statuses/index.html.erb:14
+    app/views/statuses/index.html.erb:12:in `each'
+    app/views/statuses/index.html.erb:12
+    app/controllers/statuses_controller.rb:7:in `index'
+
+Rendered rescues/_trace (123.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:56:34) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 29ms (View: 23, DB: 1) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing MilestonesController#show (for 127.0.0.1 at 2010-07-29 22:56:38) [GET]
+  Parameters: {"id"=>"999696788"}
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+Rendering template within layouts/milestones
+Rendering milestones/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/milestones/999696788]
+
+
+Processing ChildrenController#show (for 127.0.0.1 at 2010-07-29 22:56:41) [GET]
+  Parameters: {"id"=>"535793408"}
+  [4;35;1mChild Load (0.1ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+Rendering template within layouts/children
+Rendering children/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/children/535793408]
+
+
+Processing LocationsController#show (for 127.0.0.1 at 2010-07-29 22:56:45) [GET]
+  Parameters: {"id"=>"836111569"}
+  [4;36;1mLocation Load (0.1ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Rendering template within layouts/locations
+Rendering locations/show
+Completed in 81ms (View: 75, DB: 0) | 200 OK [http://127.0.0.1/locations/836111569]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:57:32) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 27ms (View: 21, DB: 1) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing LocationsController#show (for 127.0.0.1 at 2010-07-29 22:57:34) [GET]
+  Parameters: {"id"=>"836111569"}
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Rendering template within layouts/locations
+Rendering locations/show
+Completed in 13ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/locations/836111569]
+
+
+Processing LocationsController#show (for 127.0.0.1 at 2010-07-29 22:57:35) [GET]
+  Parameters: {"id"=>"836111569"}
+  [4;36;1mLocation Load (0.1ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Rendering template within layouts/locations
+Rendering locations/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/locations/836111569]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 22:57:41) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 25ms (View: 19, DB: 1) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 22:59:32) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/statuses/new]
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:06:36) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #8 of app/views/statuses/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :child %><br />
+8:     <%= f.select :children %>
+9:   </p>
+10:   
+11:   <p>
+
+    app/views/statuses/new.html.erb:8:in `select'
+    app/views/statuses/new.html.erb:8
+    app/views/statuses/new.html.erb:3
+    app/controllers/statuses_controller.rb:29:in `new'
+
+Rendered rescues/_trace (43.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:06:58) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::Children) on line #8 of app/views/statuses/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :child %><br />
+8:     <%= f.select :child, Children %>
+9:   </p>
+10:   
+11:   <p>
+
+    app/views/statuses/new.html.erb:8
+    app/views/statuses/new.html.erb:3
+    app/controllers/statuses_controller.rb:29:in `new'
+
+Rendered rescues/_trace (42.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:07:04) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+
+ActionView::TemplateError (undefined local variable or method `children' for #<ActionView::Base:0x1031de5f8>) on line #8 of app/views/statuses/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :child %><br />
+8:     <%= f.select :child, children %>
+9:   </p>
+10:   
+11:   <p>
+
+    app/views/statuses/new.html.erb:8
+    app/views/statuses/new.html.erb:3
+    app/controllers/statuses_controller.rb:29:in `new'
+
+Rendered rescues/_trace (42.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:07:06) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+
+ActionView::TemplateError (undefined method `inject' for :children:Symbol) on line #8 of app/views/statuses/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :child %><br />
+8:     <%= f.select :child, :children %>
+9:   </p>
+10:   
+11:   <p>
+
+    app/views/statuses/new.html.erb:8
+    app/views/statuses/new.html.erb:3
+    app/controllers/statuses_controller.rb:29:in `new'
+
+Rendered rescues/_trace (121.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:07:13) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+
+ActionView::TemplateError (undefined method `inject' for :child:Symbol) on line #8 of app/views/statuses/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :child %><br />
+8:     <%= f.select :child, :child %>
+9:   </p>
+10:   
+11:   <p>
+
+    app/views/statuses/new.html.erb:8
+    app/views/statuses/new.html.erb:3
+    app/controllers/statuses_controller.rb:29:in `new'
+
+Rendered rescues/_trace (46.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:07:21) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined method `inject' for #<Class:0x1035374e8>) on line #8 of app/views/statuses/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :child %><br />
+8:     <%= f.select :child, Child %>
+9:   </p>
+10:   
+11:   <p>
+
+    app/views/statuses/new.html.erb:8
+    app/views/statuses/new.html.erb:3
+    app/controllers/statuses_controller.rb:29:in `new'
+
+Rendered rescues/_trace (45.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:07:26) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+
+ActionView::TemplateError (undefined method `inject' for :Child:Symbol) on line #8 of app/views/statuses/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :child %><br />
+8:     <%= f.select :child, :Child %>
+9:   </p>
+10:   
+11:   <p>
+
+    app/views/statuses/new.html.erb:8
+    app/views/statuses/new.html.erb:3
+    app/controllers/statuses_controller.rb:29:in `new'
+
+Rendered rescues/_trace (44.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:07:32) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+
+ActionView::TemplateError (uninitialized constant Child::All) on line #8 of app/views/statuses/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :child %><br />
+8:     <%= f.select :child, Child::All %>
+9:   </p>
+10:   
+11:   <p>
+
+    app/views/statuses/new.html.erb:8
+    app/views/statuses/new.html.erb:3
+    app/controllers/statuses_controller.rb:29:in `new'
+
+Rendered rescues/_trace (118.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:07:36) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::Children) on line #8 of app/views/statuses/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :child %><br />
+8:     <%= f.select :child, Children::All %>
+9:   </p>
+10:   
+11:   <p>
+
+    app/views/statuses/new.html.erb:8
+    app/views/statuses/new.html.erb:3
+    app/controllers/statuses_controller.rb:29:in `new'
+
+Rendered rescues/_trace (119.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:07:52) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+Completed in 20ms (View: 15, DB: 0) | 200 OK [http://127.0.0.1/statuses/new]
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:08:47) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+  [4;35;1mChild Load (0.3ms)[0m   [0mSELECT * FROM "children" [0m
+Completed in 23ms (View: 17, DB: 0) | 200 OK [http://127.0.0.1/statuses/new]
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:09:16) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+Completed in 96ms (View: 91, DB: 0) | 200 OK [http://127.0.0.1/statuses/new]
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:09:41) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" [0m
+Completed in 31ms (View: 25, DB: 1) | 200 OK [http://127.0.0.1/statuses/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (46.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (4.5ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateStatuses (20100729211929)
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar(255), "location_id" integer, "child_id" integer, "milestone_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729211929')[0m
+Migrating to CreateChildren (20100729212011)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "children" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212011')[0m
+Migrating to CreateMilestones (20100729212103)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "milestones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "reward" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212103')[0m
+Migrating to CreateParents (20100729212144)
+  [4;35;1mSQL (1.3ms)[0m   [0mCREATE TABLE "parents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212144')[0m
+Migrating to CreateLocations (20100729212221)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" varchar(255), "lng" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212221')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("children")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("locations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("milestones")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("parents")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("statuses")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStatuses (20100729211929)
+Migrating to CreateChildren (20100729212011)
+Migrating to CreateMilestones (20100729212103)
+Migrating to CreateParents (20100729212144)
+Migrating to CreateLocations (20100729212221)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("children")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("locations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("milestones")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("parents")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("statuses")[0m
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:13:09) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" [0m
+Completed in 31ms (View: 25, DB: 1) | 200 OK [http://127.0.0.1/statuses/new]
+
+
+Processing StatusesController#create (for 127.0.0.1 at 2010-07-29 23:13:24) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"SzxMzbOnrFcIXcdACLlylv+S2J/0V8+Fa7LurW9e+aI=", "status"=>{"location"=>"591404843", "body"=>"daddy", "milestone"=>"956753527", "child"=>"228073172"}}
+
+ActiveRecord::AssociationTypeMismatch (Location(#2173534640) expected, got String(#2148246520)):
+  app/controllers/statuses_controller.rb:43:in `new'
+  app/controllers/statuses_controller.rb:43:in `create'
+
+Rendered rescues/_trace (35.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#create (for 127.0.0.1 at 2010-07-29 23:13:44) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"SzxMzbOnrFcIXcdACLlylv+S2J/0V8+Fa7LurW9e+aI=", "status"=>{"location"=>"591404843", "body"=>"daddy", "milestone"=>"956753527", "child"=>"228073172"}}
+
+ActiveRecord::AssociationTypeMismatch (Location(#2174450240) expected, got String(#2148246520)):
+  app/controllers/statuses_controller.rb:43:in `new'
+  app/controllers/statuses_controller.rb:43:in `create'
+
+Rendered rescues/_trace (35.8ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:15:36) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" [0m
+Completed in 112ms (View: 29, DB: 1) | 200 OK [http://127.0.0.1/statuses/new]
+
+
+Processing StatusesController#create (for 127.0.0.1 at 2010-07-29 23:15:42) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"SzxMzbOnrFcIXcdACLlylv+S2J/0V8+Fa7LurW9e+aI=", "status"=>{"milestone_id"=>"956753527", "body"=>"daddy", "location_id"=>"591404843", "child_id"=>"228073172"}}
+  [4;35;1mStatus Create (0.3ms)[0m   [0mINSERT INTO "statuses" ("milestone_id", "created_at", "body", "updated_at", "location_id", "child_id") VALUES(956753527, '2010-07-29 22:15:42', 'daddy', '2010-07-29 22:15:42', 591404843, 228073172)[0m
+Redirected to http://127.0.0.1:3000/statuses/214540409
+Completed in 64ms (DB: 0) | 302 Found [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#show (for 127.0.0.1 at 2010-07-29 23:15:43) [GET]
+  Parameters: {"id"=>"214540409"}
+  [4;36;1mStatus Load (0.2ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 214540409) [0m
+Rendering template within layouts/statuses
+Rendering statuses/show
+Completed in 15ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/statuses/214540409]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 23:15:44) [GET]
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 228073172) [0m
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;35;1mLocation Load (0.1ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 591404843) [0m
+Completed in 33ms (View: 26, DB: 2) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing LocationsController#show (for 127.0.0.1 at 2010-07-29 23:15:51) [GET]
+  Parameters: {"id"=>"591404843"}
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 591404843) [0m
+Rendering template within layouts/locations
+Rendering locations/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/locations/591404843]
+
+
+Processing StatusesController#new (for 127.0.0.1 at 2010-07-29 23:16:14) [GET]
+Rendering template within layouts/statuses
+Rendering statuses/new
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" [0m
+Completed in 26ms (View: 20, DB: 1) | 200 OK [http://127.0.0.1/statuses/new]
+
+
+Processing StatusesController#create (for 127.0.0.1 at 2010-07-29 23:16:23) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"SzxMzbOnrFcIXcdACLlylv+S2J/0V8+Fa7LurW9e+aI=", "status"=>{"milestone_id"=>"956753527", "body"=>"mummy", "location_id"=>"836111569", "child_id"=>"535793408"}}
+  [4;36;1mStatus Create (0.3ms)[0m   [0;1mINSERT INTO "statuses" ("milestone_id", "created_at", "body", "updated_at", "location_id", "child_id") VALUES(956753527, '2010-07-29 22:16:23', 'mummy', '2010-07-29 22:16:23', 836111569, 535793408)[0m
+Redirected to http://127.0.0.1:3000/statuses/214540410
+Completed in 63ms (DB: 0) | 302 Found [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#show (for 127.0.0.1 at 2010-07-29 23:16:23) [GET]
+  Parameters: {"id"=>"214540410"}
+  [4;35;1mStatus Load (1.3ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 214540410) [0m
+Rendering template within layouts/statuses
+Rendering statuses/show
+Completed in 16ms (View: 4, DB: 1) | 200 OK [http://127.0.0.1/statuses/214540410]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-29 23:16:25) [GET]
+  [4;36;1mStatus Load (0.5ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.3ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 228073172) [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 591404843) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 111ms (View: 103, DB: 2) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 21:01:11) [GET]
+  [4;36;1mStatus Load (16.5ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;35;1mChild Load (0.9ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mLocation Load (0.8ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;36;1mChild Load (0.3ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 228073172) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;36;1mLocation Load (0.3ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 591404843) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 323ms (View: 252, DB: 19) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing MilestonesController#show (for 127.0.0.1 at 2010-07-30 22:36:37) [GET]
+  Parameters: {"id"=>"999696788"}
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+Rendering template within layouts/milestones
+Rendering milestones/show
+Completed in 90ms (View: 22, DB: 0) | 200 OK [http://127.0.0.1/milestones/999696788]
+
+
+Processing MilestonesController#index (for 127.0.0.1 at 2010-07-30 22:36:39) [GET]
+  [4;35;1mMilestone Load (0.4ms)[0m   [0mSELECT * FROM "milestones" [0m
+Rendering template within layouts/milestones
+Rendering milestones/index
+Completed in 17ms (View: 12, DB: 0) | 200 OK [http://127.0.0.1/milestones]
+
+
+Processing MilestonesController#show (for 127.0.0.1 at 2010-07-30 22:38:27) [GET]
+  Parameters: {"id"=>"956753527"}
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+Rendering template within layouts/milestones
+Rendering milestones/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/milestones/956753527]
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateStatuses (20100729211929)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar(255), "location_id" integer, "child_id" integer, "milestone_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729211929')[0m
+Migrating to CreateChildren (20100729212011)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "children" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212011')[0m
+Migrating to CreateMilestones (20100729212103)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "milestones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "reward" integer, "milestone_category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212103')[0m
+Migrating to CreateParents (20100729212144)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "parents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "birthdate" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212144')[0m
+Migrating to CreateLocations (20100729212221)
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" varchar(255), "lng" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100729212221')[0m
+Migrating to CreateMilestoneCategories (20100730214758)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "milestone_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100730214758')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("children")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("locations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("milestone_categories")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("milestones")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("parents")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("statuses")[0m
+  [4;36;1mMilestone Load (0.4ms)[0m   [0;1mSELECT * FROM "milestones" LIMIT 1[0m
+  [4;35;1mMilestone Load (0.5ms)[0m   [0mSELECT * FROM "milestones" LIMIT 1[0m
+  [4;36;1mMilestone Load (0.5ms)[0m   [0;1mSELECT * FROM "milestones" LIMIT 1[0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 388575243) [0m
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 22:55:29) [GET]
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/statuses
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mLocation Load (0.3ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 103ms (View: 30, DB: 1) | 200 OK [http://127.0.0.1/statuses]
+
+
+Processing MilestoneCategoriesController#show (for 127.0.0.1 at 2010-07-30 22:55:34) [GET]
+  Parameters: {"id"=>"944570480"}
+  [4;36;1mMilestoneCategory Load (0.1ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+Rendering template within layouts/milestone_categories
+Rendering milestone_categories/show
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://127.0.0.1/milestone_categories/944570480]
+
+
+Processing MilestonesController#show (for 127.0.0.1 at 2010-07-30 22:55:50) [GET]
+  Parameters: {"id"=>"999696788"}
+  [4;35;1mMilestone Load (0.1ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+Rendering template within layouts/milestones
+Rendering milestones/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/milestones/999696788]
+
+
+Processing MilestonesController#show (for 127.0.0.1 at 2010-07-30 22:56:47) [GET]
+  Parameters: {"id"=>"999696788"}
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+Rendering template within layouts/milestones
+Rendering milestones/show
+  [4;35;1mMilestoneCategory Load (0.3ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+Completed in 21ms (View: 15, DB: 0) | 200 OK [http://127.0.0.1/milestones/999696788]
+
+
+Processing MilestoneCategoriesController#show (for 127.0.0.1 at 2010-07-30 22:56:50) [GET]
+  Parameters: {"id"=>"944570480"}
+  [4;36;1mMilestoneCategory Load (0.1ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+Rendering template within layouts/milestone_categories
+Rendering milestone_categories/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/milestone_categories/944570480]
+
+
+Processing MilestonesController#index (for 127.0.0.1 at 2010-07-30 23:06:28) [GET]
+  [4;35;1mMilestone Load (0.5ms)[0m   [0mSELECT * FROM "milestones" [0m
+Rendering template within layouts/milestones
+Rendering milestones/index
+Completed in 18ms (View: 12, DB: 0) | 200 OK [http://127.0.0.1/milestones]
+
+
+Processing MilestonesController#index (for 127.0.0.1 at 2010-07-30 23:11:54) [GET]
+  [4;36;1mMilestone Load (0.5ms)[0m   [0;1mSELECT * FROM "milestones" [0m
+Rendering template within layouts/main
+Rendering milestones/index
+
+ActionView::TemplateError (undefined method `action_name' for "milestones":String) on line #5 of app/views/layouts/main.html.erb:
+2: <html lang="en">
+3:   <head>
+4:     <meta charset=utf-8>
+5:     <title>BabyMiles: <%= controller.controller_name %> - <%= controller_name.action_name %></title>
+6:     <meta name="description" content="BabyMiles. Data intelligence for your sprogs."/>
+7:     <%= stylesheet_link_tag 'scaffold' %>
+8:     <link rel="shortcut icon" href="favicon.ico" />
+
+    app/views/layouts/main.html.erb:5
+    app/controllers/milestones_controller.rb:8:in `index'
+
+Rendered rescues/_trace (115.0ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MilestonesController#index (for 127.0.0.1 at 2010-07-30 23:12:09) [GET]
+  [4;35;1mMilestone Load (0.5ms)[0m   [0mSELECT * FROM "milestones" [0m
+Rendering template within layouts/main
+Rendering milestones/index
+Completed in 21ms (View: 15, DB: 0) | 200 OK [http://127.0.0.1/milestones]
+
+
+Processing MilestonesController#show (for 127.0.0.1 at 2010-07-30 23:12:13) [GET]
+  Parameters: {"id"=>"130897217"}
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 130897217) [0m
+Rendering template within layouts/main
+Rendering milestones/show
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 388575243) [0m
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/milestones/130897217]
+
+
+Processing MilestonesController#show to ico (for 127.0.0.1 at 2010-07-30 23:12:13) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Milestone with ID=favicon):
+  app/controllers/milestones_controller.rb:17:in `show'
+
+Rendered rescues/_trace (33.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing MilestonesController#show (for 127.0.0.1 at 2010-07-30 23:14:02) [GET]
+  Parameters: {"id"=>"999696788"}
+  [4;35;1mMilestone Load (0.1ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+Rendering template within layouts/main
+Rendering milestones/show
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+Completed in 18ms (View: 11, DB: 0) | 200 OK [http://127.0.0.1/milestones/999696788]
+
+
+Processing MilestonesController#show to ico (for 127.0.0.1 at 2010-07-30 23:14:02) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mMilestone Load (0.1ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Milestone with ID=favicon):
+  app/controllers/milestones_controller.rb:17:in `show'
+
+Rendered rescues/_trace (31.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:14:07) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.3ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 101ms (View: 95, DB: 1) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:14:07) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mStatus Load (0.1ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:17:in `show'
+
+Rendered rescues/_trace (32.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (not_found)
+
+
+Processing MilestonesController#index (for 127.0.0.1 at 2010-07-30 23:14:09) [GET]
+  [4;36;1mMilestone Load (0.5ms)[0m   [0;1mSELECT * FROM "milestones" [0m
+Rendering template within layouts/main
+Rendering milestones/index
+Completed in 17ms (View: 12, DB: 0) | 200 OK [http://127.0.0.1/milestones/]
+
+
+Processing MilestonesController#show to ico (for 127.0.0.1 at 2010-07-30 23:14:10) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Milestone with ID=favicon):
+  app/controllers/milestones_controller.rb:17:in `show'
+
+Rendered rescues/_trace (112.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ChildrenController#index (for 127.0.0.1 at 2010-07-30 23:14:11) [GET]
+  [4;36;1mChild Load (0.4ms)[0m   [0;1mSELECT * FROM "children" [0m
+Rendering template within layouts/main
+Rendering children/index
+Completed in 97ms (View: 93, DB: 0) | 200 OK [http://127.0.0.1/children/]
+
+
+Processing ChildrenController#show to ico (for 127.0.0.1 at 2010-07-30 23:14:11) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Child with ID=favicon):
+  app/controllers/children_controller.rb:17:in `show'
+
+Rendered rescues/_trace (33.8ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (not_found)
+
+
+Processing LocationsController#index (for 127.0.0.1 at 2010-07-30 23:14:11) [GET]
+  [4;36;1mLocation Load (0.5ms)[0m   [0;1mSELECT * FROM "locations" [0m
+Rendering template within layouts/main
+Rendering locations/index
+Completed in 95ms (View: 89, DB: 0) | 200 OK [http://127.0.0.1/locations/]
+
+
+Processing LocationsController#show to ico (for 127.0.0.1 at 2010-07-30 23:14:12) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Location with ID=favicon):
+  app/controllers/locations_controller.rb:17:in `show'
+
+Rendered rescues/_trace (33.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ParentsController#index (for 127.0.0.1 at 2010-07-30 23:14:13) [GET]
+  [4;36;1mParent Load (0.4ms)[0m   [0;1mSELECT * FROM "parents" [0m
+Rendering template within layouts/main
+Rendering parents/index
+Completed in 100ms (View: 96, DB: 0) | 200 OK [http://127.0.0.1/parents/]
+
+
+Processing ParentsController#show to ico (for 127.0.0.1 at 2010-07-30 23:14:13) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mParent Load (0.2ms)[0m   [0mSELECT * FROM "parents" WHERE ("parents"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Parent with ID=favicon):
+  app/controllers/parents_controller.rb:17:in `show'
+
+Rendered rescues/_trace (112.7ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ParentsController#show (for 127.0.0.1 at 2010-07-30 23:14:16) [GET]
+  Parameters: {"id"=>"3764880"}
+  [4;36;1mParent Load (0.1ms)[0m   [0;1mSELECT * FROM "parents" WHERE ("parents"."id" = 3764880) [0m
+Rendering template within layouts/main
+Rendering parents/show
+Completed in 11ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/parents/3764880]
+
+
+Processing ParentsController#show to ico (for 127.0.0.1 at 2010-07-30 23:14:16) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mParent Load (1.1ms)[0m   [0mSELECT * FROM "parents" WHERE ("parents"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Parent with ID=favicon):
+  app/controllers/parents_controller.rb:17:in `show'
+
+Rendered rescues/_trace (32.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ParentsController#show to ico (for 127.0.0.1 at 2010-07-30 23:14:23) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mParent Load (0.2ms)[0m   [0;1mSELECT * FROM "parents" WHERE ("parents"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Parent with ID=favicon):
+  app/controllers/parents_controller.rb:17:in `show'
+
+Rendered rescues/_trace (39.7ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ParentsController#show (for 127.0.0.1 at 2010-07-30 23:15:32) [GET]
+  Parameters: {"id"=>"3764880"}
+  [4;35;1mParent Load (0.3ms)[0m   [0mSELECT * FROM "parents" WHERE ("parents"."id" = 3764880) [0m
+Rendering template within layouts/main
+Rendering parents/show
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/parents/3764880]
+
+
+Processing ParentsController#show to ico (for 127.0.0.1 at 2010-07-30 23:15:32) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mParent Load (0.1ms)[0m   [0;1mSELECT * FROM "parents" WHERE ("parents"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Parent with ID=favicon):
+  app/controllers/parents_controller.rb:17:in `show'
+
+Rendered rescues/_trace (31.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ParentsController#show (for 127.0.0.1 at 2010-07-30 23:15:52) [GET]
+  Parameters: {"id"=>"3764880"}
+  [4;35;1mParent Load (0.2ms)[0m   [0mSELECT * FROM "parents" WHERE ("parents"."id" = 3764880) [0m
+Rendering template within layouts/main
+Rendering parents/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/parents/3764880]
+
+
+Processing ParentsController#show to ico (for 127.0.0.1 at 2010-07-30 23:15:52) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mParent Load (0.3ms)[0m   [0;1mSELECT * FROM "parents" WHERE ("parents"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Parent with ID=favicon):
+  app/controllers/parents_controller.rb:17:in `show'
+
+Rendered rescues/_trace (32.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ParentsController#show (for 127.0.0.1 at 2010-07-30 23:16:08) [GET]
+  Parameters: {"id"=>"3764880"}
+  [4;35;1mParent Load (0.1ms)[0m   [0mSELECT * FROM "parents" WHERE ("parents"."id" = 3764880) [0m
+Rendering template within layouts/main
+Rendering parents/show
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/parents/3764880]
+
+
+Processing ParentsController#show to ico (for 127.0.0.1 at 2010-07-30 23:16:09) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mParent Load (0.1ms)[0m   [0;1mSELECT * FROM "parents" WHERE ("parents"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Parent with ID=favicon):
+  app/controllers/parents_controller.rb:17:in `show'
+
+Rendered rescues/_trace (101.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ParentsController#show (for 127.0.0.1 at 2010-07-30 23:16:15) [GET]
+  Parameters: {"id"=>"3764880"}
+  [4;35;1mParent Load (0.1ms)[0m   [0mSELECT * FROM "parents" WHERE ("parents"."id" = 3764880) [0m
+Rendering template within layouts/main
+Rendering parents/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/parents/3764880]
+
+
+Processing ParentsController#show to ico (for 127.0.0.1 at 2010-07-30 23:16:15) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mParent Load (0.1ms)[0m   [0;1mSELECT * FROM "parents" WHERE ("parents"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Parent with ID=favicon):
+  app/controllers/parents_controller.rb:17:in `show'
+
+Rendered rescues/_trace (31.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ParentsController#show (for 127.0.0.1 at 2010-07-30 23:17:24) [GET]
+  Parameters: {"id"=>"3764880"}
+  [4;35;1mParent Load (0.1ms)[0m   [0mSELECT * FROM "parents" WHERE ("parents"."id" = 3764880) [0m
+Rendering template within layouts/main
+Rendering parents/show
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/parents/3764880]
+
+
+Processing ParentsController#show to ico (for 127.0.0.1 at 2010-07-30 23:17:25) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mParent Load (0.1ms)[0m   [0;1mSELECT * FROM "parents" WHERE ("parents"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Parent with ID=favicon):
+  app/controllers/parents_controller.rb:17:in `show'
+
+Rendered rescues/_trace (31.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:17:27) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 98ms (View: 92, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:17:46) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.1ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 29ms (View: 23, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:21:14) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 109ms (View: 34, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:23:43) [GET]
+  [4;36;1mStatus Load (0.5ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 31ms (View: 26, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:24:24) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 108ms (View: 102, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#edit (for 127.0.0.1 at 2010-07-30 23:24:26) [GET]
+  Parameters: {"id"=>"214540408"}
+  [4;36;1mStatus Load (0.2ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 214540408) [0m
+Rendering template within layouts/main
+Rendering statuses/edit
+Completed in 100ms (View: 95, DB: 0) | 200 OK [http://127.0.0.1/statuses/214540408/edit]
+
+
+Processing StatusesController#214540408 to ico (for 127.0.0.1 at 2010-07-30 23:24:26) [GET]
+  Parameters: {"id"=>"favicon"}
+
+ActionController::UnknownAction (No action responded to 214540408. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:24:44) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.3ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 105ms (View: 99, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:25:14) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 37ms (View: 32, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:26:34) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 40ms (View: 33, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:26:42) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 111ms (View: 33, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:26:53) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 36ms (View: 30, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:27:09) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 109ms (View: 102, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:27:33) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 33ms (View: 27, DB: 1) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:28:11) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #4 of app/views/statuses/index.html.erb:
+1: <h1>Statuses</h1>
+2: <%= link_to 'New status', new_status_path %>
+3: 
+4: <% form_for(@status) do |f| %>
+5:   <%= f.error_messages %>
+6: 
+7:   <p>
+
+    app/views/statuses/index.html.erb:4
+    app/controllers/statuses_controller.rb:8:in `index'
+
+Rendered rescues/_trace (43.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:28:23) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined method `errors' for #<Class:0x1033ab340>) on line #5 of app/views/statuses/index.html.erb:
+2: <%= link_to 'New status', new_status_path %>
+3: 
+4: <% form_for(Status) do |f| %>
+5:   <%= f.error_messages %>
+6: 
+7:   <p>
+8:     <%= f.label :child_id %><br />
+
+    app/views/statuses/index.html.erb:5
+    app/views/statuses/index.html.erb:4
+    app/controllers/statuses_controller.rb:8:in `index'
+
+Rendered rescues/_trace (126.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:28:43) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" [0m
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 44ms (View: 36, DB: 2) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:29:46) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.3ms)[0m   [0;1mSELECT * FROM "locations" [0m
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 111ms (View: 103, DB: 2) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:29:57) [GET]
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" [0m
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.1ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 39ms (View: 32, DB: 2) | 200 OK [http://127.0.0.1/]
+
+
+Processing StatusesController#create (for 127.0.0.1 at 2010-07-30 23:30:27) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"4VdVh9jfi/SBh8EvjsR0B+62HkRg26PssCanbSiKtN8=", "status"=>{"milestone_id"=>"956753527", "body"=>"mama", "location_id"=>"836111569", "child_id"=>"535793408"}}
+  [4;35;1mStatus Create (0.4ms)[0m   [0mINSERT INTO "statuses" ("milestone_id", "created_at", "body", "updated_at", "location_id", "child_id") VALUES(956753527, '2010-07-30 22:30:27', 'mama', '2010-07-30 22:30:27', 836111569, 535793408)[0m
+Redirected to http://127.0.0.1:3000/statuses/214540409
+Completed in 126ms (DB: 0) | 302 Found [http://127.0.0.1/statuses]
+
+
+Processing StatusesController#show (for 127.0.0.1 at 2010-07-30 23:30:27) [GET]
+  Parameters: {"id"=>"214540409"}
+  [4;36;1mStatus Load (0.2ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 214540409) [0m
+Rendering template within layouts/main
+Rendering statuses/show
+Completed in 25ms (View: 19, DB: 0) | 200 OK [http://127.0.0.1/statuses/214540409]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:30:28) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mStatus Load (0.1ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (31.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:30:31) [GET]
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" [0m
+  [4;36;1mMilestone Load (0.3ms)[0m   [0;1mSELECT * FROM "milestones" [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" [0m
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.1ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;36;1mMilestoneCategory Load (0.1ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 108ms (View: 101, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:30:31) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mStatus Load (0.2ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (33.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:33:30) [GET]
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" ORDER BY created_at DESC[0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" [0m
+  [4;35;1mChild Load (0.1ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.1ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 116ms (View: 109, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:33:31) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mStatus Load (0.1ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) ORDER BY created_at DESC[0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (31.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:34:08) [GET]
+  [4;36;1mStatus Load (0.6ms)[0m   [0;1mSELECT * FROM "statuses" ORDER BY created_at DESC[0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" [0m
+  [4;36;1mMilestone Load (0.3ms)[0m   [0;1mSELECT * FROM "milestones" [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" [0m
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 123ms (View: 115, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:34:08) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mStatus Load (0.1ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) ORDER BY created_at DESC[0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (31.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:34:38) [GET]
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" ORDER BY created_at DESC[0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" [0m
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.1ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 120ms (View: 113, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:34:39) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mStatus Load (0.1ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) ORDER BY created_at DESC[0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (31.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:34:56) [GET]
+  [4;36;1mStatus Load (0.5ms)[0m   [0;1mSELECT * FROM "statuses" ORDER BY created_at DESC[0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" [0m
+  [4;36;1mMilestone Load (0.3ms)[0m   [0;1mSELECT * FROM "milestones" [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" [0m
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.1ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.1ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 114ms (View: 106, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:34:57) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mStatus Load (0.1ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) ORDER BY created_at DESC[0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (31.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:35:10) [GET]
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" ORDER BY created_at DESC[0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" [0m
+  [4;35;1mChild Load (0.1ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.1ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 114ms (View: 106, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:35:10) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mStatus Load (0.2ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) ORDER BY created_at DESC[0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (33.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:35:52) [GET]
+  [4;36;1mStatus Load (0.5ms)[0m   [0;1mSELECT * FROM "statuses" ORDER BY created_at DESC[0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" [0m
+  [4;36;1mMilestone Load (0.3ms)[0m   [0;1mSELECT * FROM "milestones" [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" [0m
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.1ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 120ms (View: 112, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:35:52) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mStatus Load (0.1ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) ORDER BY created_at DESC[0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (31.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:36:12) [GET]
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" ORDER BY created_at DESC[0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" [0m
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.1ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 112ms (View: 105, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:36:12) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mStatus Load (0.1ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) ORDER BY created_at DESC[0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (31.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:37:10) [GET]
+  [4;36;1mStatus Load (0.5ms)[0m   [0;1mSELECT * FROM "statuses" ORDER BY created_at DESC[0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" [0m
+  [4;36;1mMilestone Load (0.3ms)[0m   [0;1mSELECT * FROM "milestones" [0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM "locations" [0m
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.1ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;35;1mLocation Load (0.1ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;35;1mMilestone Load (0.2ms)[0m   [0mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;36;1mMilestoneCategory Load (0.2ms)[0m   [0;1mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 43ms (View: 35, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:37:10) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;36;1mStatus Load (0.1ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) ORDER BY created_at DESC[0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (31.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing StatusesController#index (for 127.0.0.1 at 2010-07-30 23:37:36) [GET]
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" ORDER BY created_at DESC[0m
+Rendering template within layouts/main
+Rendering statuses/index
+  [4;36;1mChild Load (0.2ms)[0m   [0;1mSELECT * FROM "children" [0m
+  [4;35;1mMilestone Load (0.3ms)[0m   [0mSELECT * FROM "milestones" [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" [0m
+  [4;35;1mChild Load (0.2ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.1ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 956753527) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 614036022) [0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "children" WHERE ("children"."id" = 535793408) [0m
+  [4;36;1mMilestone Load (0.2ms)[0m   [0;1mSELECT * FROM "milestones" WHERE ("milestones"."id" = 999696788) [0m
+  [4;35;1mMilestoneCategory Load (0.2ms)[0m   [0mSELECT * FROM "milestone_categories" WHERE ("milestone_categories"."id" = 944570480) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "locations" WHERE ("locations"."id" = 836111569) [0m
+Completed in 112ms (View: 104, DB: 2) | 200 OK [http://127.0.0.1/statuses/]
+
+
+Processing StatusesController#show to ico (for 127.0.0.1 at 2010-07-30 23:37:36) [GET]
+  Parameters: {"id"=>"favicon"}
+  [4;35;1mStatus Load (0.1ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 0) ORDER BY created_at DESC[0m
+
+ActiveRecord::RecordNotFound (Couldn't find Status with ID=favicon):
+  app/controllers/statuses_controller.rb:18:in `show'
+
+Rendered rescues/_trace (31.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)

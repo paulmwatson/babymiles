@@ -1,0 +1,22 @@
+.statuses, .statuses li
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.statuses li
+{
+  margin-bottom: 1em;
+}
+
+.statuses li p
+{
+  margin: 0;
+}
+
+.statuses li .meta, .statuses li .meta a
+{
+  color: #ccc;
+  font-size: 10px;
+}

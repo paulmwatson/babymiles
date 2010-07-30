@@ -1,0 +1,9 @@
+home:
+  lat: 52.23918
+  lng: -7.06142
+  description: "31 The Pines, Ballinakill Downs, Waterford, co. Waterford, Ireland"
+  
+homereverse:
+  lng: 52.23918
+  lat: -7.06142
+  description: "Reverse of 31 The Pines, Ballinakill Downs, Waterford, co. Waterford, Ireland"

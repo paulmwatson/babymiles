@@ -1,0 +1,20 @@
+<h1>Editing parent</h1>
+
+<% form_for(@parent) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :birthdate %><br />
+    <%= f.datetime_select :birthdate %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @parent %> |
+<%= link_to 'Back', parents_path %>

@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @parent.name %>
+</p>
+
+<p>
+  <b>Birthdate:</b>
+  <%=h @parent.birthdate %>
+</p>
+
+
+<%= link_to 'Edit', edit_parent_path(@parent) %> |
+<%= link_to 'Back', parents_path %>

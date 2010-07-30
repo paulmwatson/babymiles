@@ -1,0 +1,13 @@
+#[leah] [has chicken pox] (location, date, poster) => child, milestone, location, date, poster
+#[leah] [said first words] ["mama"] (location, date, poster) => child, milestone, body, location, date, poster
+#[leah] [height] ["72cm"] (location, date, poster) => child, milestone, body, date, poster
+#[leah] [weight] ["10kg"] (location, date, poster) => child, milestone, body, date, poster
+#[leah] [sleep] (location, date, poster) => child, milestone, date, poster
+#[leah] [awake] (location, date, poster) => child, milestone, date, poster
+#[leah] [visiting] ["granny"] (location, date, poster) => child, milestone, body, date, poster
+
+testchickenpoxmildleahewatson:
+  body: mild case
+  child: leahewatson
+  location: home
+  milestone: diseasechickenpox

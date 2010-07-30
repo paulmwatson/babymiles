@@ -1,0 +1,13 @@
+#site_navigation, #site_navigation li
+{
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+#site_navigation li
+{
+  float: left;
+  margin-right: 1em;
+}
